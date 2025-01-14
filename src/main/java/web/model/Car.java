@@ -1,4 +1,6 @@
-package Model;
+package web.model;
+
+import java.util.Objects;
 
 public class Car {
 
@@ -45,5 +47,19 @@ public class Car {
                 ", number=" + number +
                 ", country='" + country + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(model, car.model) &&
+                Objects.equals(number, car.number) &&
+                Objects.equals(country, car.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(model, number, country);
     }
 }
